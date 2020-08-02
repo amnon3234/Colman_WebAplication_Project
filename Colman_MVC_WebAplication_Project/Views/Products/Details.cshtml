@@ -1,0 +1,53 @@
+﻿@model Colman_MVC_WebAplication_Project.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<h2>Product Details</h2>
+<hr />
+<br />
+<br />
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductImagePath)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductPrice) ₪
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductOrderCount)
+        </th>
+    </tr>
+    <tr class="row">
+        <td class="col">
+            @Html.DisplayFor(model => model.ProductName)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.ProductImagePath)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.ProductDescription)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.ProductPrice)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.ProductOrderCount)
+        </td>
+    </tr>
+</table>
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,35 @@
+﻿
+
+.grayLine {
+    height: 40px;
+    background-color: #1D1C21;
+}
+
+.Category-HeadLine {
+    background-color: #FFE5E5;
+    padding: 50px;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.productWrapper {
+    width: auto;
+    margin: 50px;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.productTableWrapper {
+    height: auto;
+    overflow: hidden;
+    background-color: #EEF2F5;
+    border: 1px solid #FFECE5;
+    align-items: center;
+
+}

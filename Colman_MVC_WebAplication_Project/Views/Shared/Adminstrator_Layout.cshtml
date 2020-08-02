@@ -1,0 +1,71 @@
+﻿@{
+    List<Colman_MVC_WebAplication_Project.Models.Category> categories = new Colman_MVC_WebAplication_Project.Data.StoreDataBase().Categories.ToList();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/cssFiles/AdminstratorLayoutStyle.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/cssFiles/MangmentPage.css" type="text/css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- Side Bar-->
+        <div class="sidebar-wrapper">
+            <a href="/Home/Index"><img src="~/Images/logo.jpg" /></a>
+            <h2> Management </h2>
+            <ul>
+                <li><a href="/Administrator/Index"> Manager Page </a></li>
+                <li><a href="/Users/Index"> Users</a></li>
+                <li><a href="/Categories/Index"> Categories</a></li>
+                <li><a href="/Products/Index"> Products</a></li>
+            </ul>
+
+            <div style="height: 25%;"></div>
+
+            <!-- Search From Users -->
+            <div class="search-form">
+                <h3> Search Product </h3>
+                <br />
+                <h6>Category</h6>
+                <select id="category">
+                    @foreach (Colman_MVC_WebAplication_Project.Models.Category category in categories)
+                    {
+                        <option value="@category.CategoryID"> @category.CategoryName </option>
+                    }
+
+                </select>
+
+                <br />
+                <br />
+                <h6>Gender Preference </h6>
+                <select id="gender">
+                    <option value="female"> Female </option>
+                    <option value="male"> Male </option>
+                    <option value="both"> Both </option>
+                </select>
+                <br />
+                <br />
+                <h6> Maximum Price </h6>
+                <input type="text" id="MaxPrice" />
+                <br /><br />
+
+                <center>
+                    <button onclick="search()"> Search </button>
+                </center>
+            </div>
+        </div>
+        <!-- Page Content-->
+        <div class="main-content">
+            @RenderBody()
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+<script type="text/javascript" src="~/Content/JSFiles/AdministratorPageFunctions.js"></script>
+</body>
+</html>

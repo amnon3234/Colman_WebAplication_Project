@@ -1,0 +1,43 @@
+﻿@model Colman_MVC_WebAplication_Project.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<h3>Are you sure you want to delete this User?</h3>
+<hr />
+<br />
+<br />
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+    </tr>
+    <tr class="row">
+        <td class="col">
+            @Html.DisplayFor(model => model.CategoryName)
+        </td>
+        <td class="col">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

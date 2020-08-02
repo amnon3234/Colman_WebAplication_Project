@@ -1,0 +1,181 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+}
+
+.grayLine {
+    height: 40px;
+    background-color: #1D1C21;
+}
+
+/*----------------------------------- header -------------------------------------------------*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+    .nav_links li {
+        display: inline-block;
+        padding: 0px 20px;
+    }
+
+        .nav_links li a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .nav_links li a:hover {
+                color: #FFB4BE;
+            }
+
+button {
+    padding: 9px 25px;
+    background-color: #FFB4BE;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+    button:hover {
+        background-color: white;
+    }
+
+/*------------------------------------ page wrapper ---------------------------------------------*/
+#page-wrapper {
+    min-height: 100% px;
+}
+
+/*-------------------------------------- footer -------------------------------------------------*/
+.footer {
+    background: #303036;
+    color: #d3d3d3;
+    height: 400px;
+    position: relative;
+}
+
+    .footer > .footer-content {
+        display: flex;
+        height: 350px;
+        padding-left: 130px;
+        padding-top: 40px;
+    }
+
+        .footer > .footer-content > .footer-section {
+            flex: 1;
+            padding: 25px;
+        }
+
+        .footer > .footer-content h1, h2 {
+            color: white;
+            padding: 15px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 26px;
+        }
+
+        .footer > .footer-content > .about > h1 > span {
+            color: #FFB4BE;
+        }
+
+        .footer > .footer-content > .links ul li {
+            color: white;
+        }
+
+        .footer > .footer-content > .links ul a {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 14px;
+        }
+
+            .footer > .footer-content > .links ul a:hover {
+                color: white;
+                margin-left: 15px;
+                transition: all 0.3s;
+            }
+
+        .text-input {
+            background: #272727;
+            color: #bebdbd;
+            margin-bottom: 10px;
+            line-height: 10px;
+            padding: 5px;
+            border: none;
+            width: 200px;
+        }
+
+    .footer > .footer-bottom {
+        width: 100%;
+        background-color: #343a40;
+        color: #686868;
+        height: 50px;
+        text-align: center;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        padding-top: 20px;
+    }
+
+/*-------------------------------------- login -------------------------------------------------*/
+
+.login-box {
+    width: 45%;
+    height: auto;
+    background: #FFECE5;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    opacity: 0.7;
+}
+
+.login-form > input {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 5px;
+    margin: 10px;
+    width: 90%;
+    background-color: #FFECE5;
+    border: 0;
+}
+
+.login-form > button {
+    margin: 10px;
+    width: 90%;
+}
+
+.table, .row, .col {
+    border: 1px solid #FFECE5;
+    border-collapse: collapse;
+}
+
+.col {
+    padding: 15px;
+}

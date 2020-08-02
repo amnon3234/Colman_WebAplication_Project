@@ -1,0 +1,341 @@
+﻿@using System.Drawing
+@using Colman_MVC_WebAplication_Project.Data
+@using Colman_MVC_WebAplication_Project.Models
+
+@{
+    ViewBag.Title = "Contact";
+    StoreDataBase dataBase = new StoreDataBase();
+    User user = dataBase.Users.FirstOrDefault(u => u.UserName == "Admin");
+}
+
+
+<!-- In this page we will fill all the missing project requirements   -->
+<!-- Contact page style -->
+<style>
+    aside {
+        width: 40%;
+        padding-left: 10px;
+        margin-left: 10px;
+        float: right;
+        margin-right: 10%;
+        font-style: italic;
+        background-color: lightgray;
+    }
+
+    .contact-page-header {
+        background-color: #303036;
+    }
+
+        .contact-page-header > div {
+            padding: 50px;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+    .mapouter {
+        position: relative;
+        text-align: right;
+        height: 500px;
+        width: 600px;
+    }
+
+
+    .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 600px;
+    }
+
+    .joinTable , td , tr , th{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+    .joinTable  td {
+        padding: 20px;
+    }
+
+</style>
+
+
+<!-- Header example -->
+<header class="contact-page-header" style="background-color: #303036;">
+    <div>
+        <h2>Header Example </h2>
+    </div>
+</header>
+
+<br />
+<br />
+
+<!-- section and nav examples -->
+<section style="text-align: center;">
+    <h3> Section and nav examples </h3>
+    <br />
+    <nav>
+        <a href="#map">location</a> |
+        <a href="#phoneNumber">map</a> |
+    </nav>
+</section>
+
+<br />
+<br />
+<br />
+
+<!-- Aside Example -->
+<center>
+    <div style="width: 60%; align-items: center; text-align: left;">
+        <h3 style="text-align: center">Aside example</h3>
+        <br />
+        <p>
+            The aside element example  The aside element example The aside element example The aside element example The aside element example The aside element example
+            The aside element example  The aside element example The aside element example The aside element example The aside.
+        </p>
+
+        <aside>
+            <p>
+                This is the aside section This is the aside section This is the aside section This is the aside section This is
+                the aside section This is the aside section
+            </p>
+        </aside>
+
+        <p> The aside element example   The aside element example  The aside element example  The aside element example  The aside element example  The aside</p>
+        <p> The aside element example  The aside element example  The aside element example  The aside element example  The aside element example </p>
+        <p> The aside element example   The aside element example  The aside element example  The aside element example  The aside element example  The aside element example </p>
+    </div>
+</center>
+
+<br />
+<br />
+<br />
+
+<!-- video-->
+<center>
+    <h3> Video tag example </h3>
+    <video width="320" height="240" controls>
+        <source src="~/images/contactUs.mp4">
+        Your browser does not support the video tag.
+    </video>
+</center>
+
+<br />
+<br />
+<br />
+
+<!-- Canvas example -->
+<center>
+    <h3> Canvas example </h3>
+    <br />
+    <a id="phoneNumber"></a>
+    <canvas id="myCanvas" width="300" height="80" style="border: 1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.
+    </canvas>
+</center>
+
+<br />
+<br />
+<!-- Map example ( take admin address from users data ) -->
+<center>
+    <h3> Map example ( take admin address from users data ) </h3>
+    <br />
+    <a id="map"></a>
+    <div class="mapouter">
+        <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=@user.Address&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
+    </div>
+</center>
+<br />
+<br />
+
+<!-- Text shadow example -->
+<h3 style="text-shadow: 2px 2px #ff0000; text-align:center">
+    Text-shadow example
+</h3>
+<br />
+<br />
+
+<!-- Multiple columns example -->
+<center>
+    <h3> Multiple columns example </h3>
+    <br />
+    <div style="column-count: 2; text-align: center; width: 400px;">
+        <p>
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+        </p>
+        <p>
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+        </p>
+        <p>
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+        </p>
+        <p>
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+            this is multiply-columns example this is multiply-columns example this is multiply-columns example
+        </p>
+    </div>
+</center>
+<br />
+<br />
+
+<!-- join example -->
+<center>
+    <h3> Join example 1 between category and product </h3>
+    <br />
+    <table class="joinTable">
+        <tr>
+            <th> Product ID</th>
+            <th> Category ID</th>
+            <th> Product Name</th>
+            <th> Category Name</th>
+            <th> Example unrelated String </th>
+        </tr>
+        @{
+            var joinList = dataBase.Categories.Join(dataBase.Products, category => category.CategoryID, product => product.CategoryID,
+                ((category, product) => new
+                {
+                    productId = product.ProductID,
+                    productName = product.ProductName,
+                    categoryId = category.CategoryID,
+                    categoryName = category.CategoryName,
+                    additionalString = " Join between category and product"
+                })).ToList();
+
+            foreach (var item in joinList)
+            {
+                <tr>
+                    <td>@item.productId</td>
+                    <td>@item.categoryId</td>
+                    <td>@item.productName</td>
+                    <td>@item.categoryName</td>
+                    <td>@item.additionalString</td>
+                </tr>
+            }
+        }
+    </table>
+    <br />
+    <br/>
+
+    <h3> Join example 2 between Users and Carts </h3>
+    <br />
+    <table class="joinTable">
+        <tr>
+            <th> User Name </th>
+            <th> Product Name </th>
+            <th> Example unrelated String </th>
+        </tr>
+        @{
+            var joinList2 = dataBase.Users.Join(dataBase.Carts, users => user.UserID, cart => cart.UserID,
+                ((currentUser, cart) => new
+                {
+                    userID = currentUser.UserID,
+                    userName = currentUser.UserName,
+                    productName = cart.Product.ProductName,
+                    additionalString = " Join between Users and Carts "
+                })).OrderBy(item => item.userID).ToList();
+
+            foreach (var item in joinList2)
+            {
+                <tr>
+                    <td>@item.userName</td>
+                    <td>@item.productName</td>
+                    <td>@item.additionalString</td>
+                </tr>
+            }
+        }
+    </table>
+</center>
+<br/>
+<br/>
+
+<!-- Group by example -->
+<center>
+    <h3> Group-by example grouping order History data by the ordering month </h3>
+    <br/>
+    <table class="joinTable">
+        <tr>
+            <th> Month ordered</th>
+            <th> User name</th>
+            <th> Product name</th>
+            <th> Amount </th>
+        </tr>
+        @{
+            var groupbyList = dataBase.OrderHistory.GroupBy(order => order.MonthNumber).ToList();
+
+            foreach (var list in groupbyList)
+            {
+                var group =  list.GetEnumerator();
+                do
+                {
+                    OrderHistory current = group.Current;
+                    if(current == null) {continue;}
+                <tr>
+                    <td>@current.MonthNumber</td>
+                    <td>@dataBase.Users.Find(current.UserID).UserName</td>
+                    <td>@dataBase.Products.Find(current.ProductID).ProductName</td>
+                    <td>@current.Amount</td>
+                </tr>
+                } while (group.MoveNext());
+
+    <tr>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+            }
+        }
+    </table>
+</center>
+<br/>
+<br/>
+
+<!-- web service example -->
+
+<center>
+    <h3> Web Service Example Weather </h3>
+    <input type="text" id="city" placeholder="City name" />
+    <input type="button" id="getWeather" value="Get Weather Data" />
+    <br />
+    <div id="result-div"></div>
+</center>
+
+<br />
+<br />
+
+<!-- Contact page script -->
+<script type="text/javascript">
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.fillText("Call us - @user.PhoneNumber", 10, 50);
+</script>
+
+<script type="text/javascript">
+    if(typeof jQuery!=='undefined'){
+        $(document).ready(function() {
+            $('#getWeather').click(function () {
+                var requestData = $('#city').val();
+                var result = $('#result-div');
+                $.ajax({
+                    url: 'https://api.openweathermap.org/data/2.5/weather',
+                    method: 'get',
+                    data: { q: requestData, appid: '7a5b844e71553f776fd37bc08f7912f3' },
+                    dataType: 'json',
+                    success: function (data) {
+                        result.html('The weather is ' + data.weather[0].main + '<br/>' + 'Description: ' + data.weather[0].description);
+                    }
+                });
+            });
+        });
+    }
+    else{
+        console.log('problem with loading jquery');
+    }
+</script>

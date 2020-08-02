@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.OrderHistory>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+    List<Colman_MVC_WebAplication_Project.Models.User> users = new Colman_MVC_WebAplication_Project.Data.StoreDataBase().Users.ToList();
+    List<Colman_MVC_WebAplication_Project.Models.Category> categories = new Colman_MVC_WebAplication_Project.Data.StoreDataBase().Categories.ToList();
+
+}
+
+
+<h1> Order History Search Results </h1>
+<br />
+<br />
+
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.MonthNumber)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.ProductID == 0)
+        { continue; }
+        <tr>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.MonthNumber)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+<br />
+
+<!-- Search Form Order History-->
+<div class="search-form">
+
+    <h3 style="text-align: center;"> Search In Order History </h3>
+    <br />
+
+    <h6>User</h6>
+    <select id="userid">
+        @foreach (Colman_MVC_WebAplication_Project.Models.User user in users)
+        {
+            <option value="@user.UserID"> @user.UserName </option>
+        }
+    </select>
+
+    <br />
+    <br />
+
+    <h6>Category</h6>
+    <select id="category">
+        @foreach (Colman_MVC_WebAplication_Project.Models.Category category in categories)
+        {
+            <option value="@category.CategoryID"> @category.CategoryName </option>
+        }
+
+    </select>
+
+    <br />
+    <br />
+
+    <h6>Month Number</h6>
+    <select id="monthNumber">
+        @for (int i = 1; i < 13; i++)
+        {
+            <option value="@i"> @i </option>
+        }
+    </select>
+
+    <br />
+    <br />
+
+    <center>
+        <button onclick="searchOrderHistory()"> Search </button>
+    </center>
+</div>

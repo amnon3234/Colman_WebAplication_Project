@@ -1,0 +1,93 @@
+﻿@using Colman_MVC_WebAplication_Project.Data
+@using Colman_MVC_WebAplication_Project.Models
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+
+    int userId = (Model as List<Cart>)[0].UserID;
+    List<Product> Products = new StoreDataBase().Products.ToList();
+    double sum = 0;
+}
+
+&nbsp;<h2>Cart Items</h2>
+<br />
+<hr />
+<br />
+<div>
+    <table>
+        <tr>
+            <td>
+                <div class="search-form">
+                    <select id="product">
+                        @foreach (Product product in Products)
+                        {
+                            <option value="@product.ProductID"> @product.ProductName </option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <td> &nbsp; <button onclick="addCartItem('/Carts/AddItem?userId=' + @userId + '&productId=')"> Add Item To Cart </button></td>
+        </tr>
+    </table>
+</div>
+<br />
+<hr />
+<br />
+<table class="table">
+    <tr class="row">
+        <th class="row"></th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Product.ProductPrice)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Product.Gender)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th class="col"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.ProductID == 0)
+        {
+            continue;
+        }
+        sum += item.Product.ProductPrice * item.Amount;
+        <tr class="row">
+            <td class="col">
+                <img alt="@item.Product.ProductName" src="@item.Product.ProductImagePath" width="50" height="50" />
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Product.ProductPrice)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Product.Gender)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td class="col">
+                <button onclick="onButtonClick('/Carts/DeleteItem?userId=' + @item.UserID + '&productId=' + @item.ProductID)">Delete Item </button>
+            </td>
+        </tr>
+    }
+
+    <tr class="row">
+        <td colspan="4" class="col"><center> Cart Price @sum ₪ </center> </td>
+    </tr>
+
+</table>
+<br />
+<hr />
+<br />
+&nbsp; <button onclick="onButtonClick('/Users/Index')"> Go Back To User Page </button>

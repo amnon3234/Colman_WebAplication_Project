@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<div>
+    <table>
+        <tr>
+            <td style="padding-right: 10px"><h2>Category Management</h2></td>
+            <td> <button onclick="onButtonClick('/Categories/Create')"> Add Category </button></td>
+        </tr>
+    </table>
+</div>
+<br />
+<br />
+<table>
+    <tr>
+        <td><input style="padding: 6px;" type="text" id="username" placeholder="Category Name" /></td>
+        <td> &nbsp; <button style="padding: 7px;" onclick="window.location = '/Categories/Search?categoryName='+ getElementById('username').value"> Search Category </button></td>
+    </tr>
+</table>
+<br />
+<br />
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryImagePath)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+        <th class="col"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="row">
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.CategoryImagePath)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.CategoryDescription)
+            </td>
+            <td class="col">
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+            </td>
+        </tr>
+    }
+
+</table>

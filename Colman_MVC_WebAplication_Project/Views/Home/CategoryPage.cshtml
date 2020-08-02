@@ -1,0 +1,64 @@
+﻿@using Colman_MVC_WebAplication_Project.Models
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Product>
+
+@{
+    ViewBag.Title = "CategoryPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Category category = (Model as List<Product>)[0].Category;
+    int count = Model.Count();
+    int i = 0;
+    int j = 4;
+}
+
+<div class="Category-HeadLine">
+    <br />
+    <h2>@Html.DisplayFor(modelItem => category.CategoryName)</h2>
+    <br />
+    <p>@Html.DisplayFor(modelItem => category.CategoryDescription)</p>
+    <br />
+    <div>
+        <select onchange="Sort(this.value,@category.CategoryID)">
+            <option selected disabled> Sort by ?</option>
+            <option value="Sort By Popularity">Sort By Popularity</option>
+            <option value="Sort By Price (low to high)">Sort By Price (low to high)</option>
+            <option value="Sort By Price (high to low)">Sort By Price (high to low)</option>
+        </select>
+    </div>
+    <br />
+</div>
+
+<br />
+<br />
+
+@while (i < count)
+{
+    <div class="products-wrapper">
+        @for (i = j - 4; i < j; i++)
+        {
+            if (i >= count)
+            {
+                return;
+            }
+            Product product = (Model as List<Product>)[i];
+
+            <!-- Product card -->
+            <div class="product">
+                <center>
+                    <a href="/Home/ProductPage?productId=@product.ProductID">
+                        <img src=@product.ProductImagePath height="300" width="200" />
+                    </a>
+                    <h4> @Html.DisplayFor(modelItem => product.ProductName) </h4>
+                    <p> @Html.DisplayFor(modelItem => product.ProductDescription)</p>
+                    <p> @Html.DisplayFor(modelItem => product.ProductPrice) ₪</p>
+                    <br />
+
+                    @if (Session["User"] != null)
+                    {
+                        <button onclick="window.location = '/Home/AddItemFromHome?productId=' + @product.ProductID;"> Add To Cart </button>
+                    }
+                </center>
+            </div>
+        }
+    </div>
+    j += 4;
+}

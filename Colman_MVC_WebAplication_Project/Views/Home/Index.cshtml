@@ -1,0 +1,164 @@
+﻿@using Colman_MVC_WebAplication_Project.Data
+@using Colman_MVC_WebAplication_Project.Models
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Product>
+
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    StoreDataBase dataBase = new StoreDataBase();
+}
+
+
+<!-- Main Title -->
+<section id="homepageHeader">
+    <div id="homepageHeaderSection">
+        <br /><br />
+        <table style="border-spacing: 30px;">
+            <tr>
+                <td>
+                    <h1>SILVER ACCESS</h1>
+                    <br />
+                    <p>Beautifully designed necklaces and pendants,</p>
+                    <p>bracelets, rings and more. </p>
+                    <br />
+                    <a class="cta" href="#BEST"><button>Find Your Next Bracelet Now</button></a>
+                    <br />
+                </td>
+                <td><img src="~/Images/HomeTilteBackGround.jpg" /></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!-- Main page information cards -->
+<section id="homepageHeader">
+    <table width="100%" style="border-spacing: 50px; margin: -50px;">
+        <tr>
+            <td class="card">
+                <h4> Door to door shipping</h4>
+            </td>
+            <td class="card">
+                <h4> Best prices in Israel</h4>
+            </td>
+            <td class="card">
+                <h4> 20% Discount </h4>
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<!-- Categories Boxes -->
+<div class="headLines">
+    <br /><br />
+    <h2>SHOP CATEGORIES</h2>
+    <br /><br /><br /><br /><br />
+</div>
+
+<div class="post-slider">
+    <div class="post-wrapper">
+        <div class="post">
+            <center>
+                <a href="/Home/CategoryPage?CategoryId=4">
+                    <img src="~/Images/earings.jpg" height="300" />
+                    <p> Earrings </p>
+                </a>
+            </center>
+        </div>
+        <div class="post">
+            <center>
+                <a href="/Home/CategoryPage?CategoryId=5">
+                    <img src="~/Images/bracelates.jpg" height="300" />
+                    <p> Bracelets </p>
+                </a>
+            </center>
+        </div>
+        <div class="post">
+            <center>
+                <a href="/Home/CategoryPage?CategoryId=6">
+                    <img src="~/Images/rings.jpg" height="300" />
+                    <p> Rings </p>
+                </a>
+            </center>
+        </div>
+        <div class="post">
+            <center>
+                <a href="/Home/CategoryPage?CategoryId=1">
+                    <img src="~/Images/necklaces.jpg" height="300" />
+                    <p> Necklaces </p>
+                </a>
+            </center>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Best Selling -->
+<div class="headLines">
+    <br /><br />
+    <h2>  BEST SELLING PRODUCTS </h2>
+    <a id="BEST"></a>
+    <br /><br />
+</div>
+
+<!--  Present two lines of four products -->
+@{ int count = Model.Count();}
+<div class="products-wrapper">
+    @for (int i = 0; i < 4; i++)
+    {
+        if (i >= count)
+        {
+            return;
+        }
+        Product product = (Model as List<Product>)[i];
+
+        <!-- Product card -->
+        <div class="product">
+            <center>
+                <a href="/Home/ProductPage?productId=@product.ProductID">
+                    <img src=@product.ProductImagePath height="300" width="200" alt="@product.ProductName" />
+                </a>
+                <h4> @Html.DisplayFor(modelItem => product.ProductName) </h4>
+                <p> @Html.DisplayFor(modelItem => product.ProductDescription)</p>
+                <p> @Html.DisplayFor(modelItem => product.ProductPrice) ₪</p>
+                <br />
+
+                @if (Session["User"] != null)
+                {
+                    <button onclick="window.location = '/Home/AddItemFromHome?productId=' + @product.ProductID;"> Add To Cart </button>
+                }
+            </center>
+        </div>
+    }
+</div>
+<br />
+<br />
+<div class="products-wrapper">
+    @for (int i = 4; i < 8; i++)
+    {
+        if (i >= count)
+        {
+            return;
+        }
+        Product product = (Model as List<Product>)[i];
+
+        <!-- Product card -->
+        <div class="product">
+            <center>
+                <a href="/Home/ProductPage?productId=@product.ProductID">
+                    <img src=@product.ProductImagePath height="300" width="200" alt="@product.ProductName" />
+                </a>
+                <h4> @Html.DisplayFor(modelItem => product.ProductName) </h4>
+                <p> @Html.DisplayFor(modelItem => product.ProductDescription)</p>
+                <p> @Html.DisplayFor(modelItem => product.ProductPrice) ₪</p>
+                @if (Session["User"] != null)
+                {
+                    <button onclick="window.location = '/Home/AddItemFromHome?productId=' + @product.ProductID;"> Add To Cart </button>
+                }
+                <br />
+            </center>
+        </div>
+    }
+</div>

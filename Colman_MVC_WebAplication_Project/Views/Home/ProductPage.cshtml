@@ -1,0 +1,65 @@
+﻿@using Colman_MVC_WebAplication_Project.Models
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Product>
+
+@{
+    ViewBag.Title = "ProductPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Product currProduct = (Model as List<Product>)[0];
+    int count = Model.Count();
+}
+
+<div class="grayLine"></div>
+
+<div class="productWrapper">
+    <center>
+        <table class="productTableWrapper" width="80%">
+            <tr>
+                <td>
+                    <img style="margin-top:-20px;" src=@currProduct.ProductImagePath width="90%" />
+                </td>
+                <td style="padding: 50px; vertical-align: top;">
+                    <h2> @currProduct.ProductName </h2>
+                    <br />
+                    <h3>@currProduct.ProductPrice ₪</h3>
+                    <br />
+                    <hr />
+                    <br />
+                    <h4> @currProduct.ProductDescription</h4>
+                    <br />
+                    @if (Session["User"] != null)
+                    {
+                        <button onclick="window.location = '/Home/AddItemFromHome?productId=' + @currProduct.ProductID;"> Add To Cart </button>
+                    }
+                </td>
+            </tr>
+        </table>
+    </center>
+</div>
+<div class="headLines">
+    <br /><br />
+    <h2>RELATED PRODUCTS</h2>
+    <br /><br /><br />
+    <div class="products-wrapper">
+        @for (int i = 1; i < 5; i++)
+        {
+            if (i >= count)
+            {
+                return;
+            }
+            Product product = (Model as List<Product>)[i];
+
+            <!-- Product card -->
+            <div class="product">
+                <center>
+                    <a href="/Home/ProductPage?productId=@product.ProductID">
+                        <img src=@product.ProductImagePath height="300" width="200" />
+                        <h4> @Html.DisplayFor(modelItem => product.ProductName) </h4>
+                        <p> @Html.DisplayFor(modelItem => product.ProductDescription)</p>
+                        <p> @Html.DisplayFor(modelItem => product.ProductPrice) ₪</p>
+                        <br />
+                    </a>
+                </center>
+            </div>
+        }
+    </div>
+</div>

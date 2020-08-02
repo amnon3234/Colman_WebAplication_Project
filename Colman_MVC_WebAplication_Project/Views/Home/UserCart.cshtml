@@ -1,0 +1,88 @@
+﻿@using Colman_MVC_WebAplication_Project.Data
+@using Colman_MVC_WebAplication_Project.Models
+@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Product> Products = new StoreDataBase().Products.ToList();
+    double sum = 0;
+}
+
+<style>
+    .table, .row, .col {
+        border: 1px solid #FFECE5;
+        border-collapse: collapse;
+    }
+
+    .col {
+        padding: 15px;
+    }
+</style>
+<center>
+    &nbsp;<h2>Cart Items</h2>
+    <br />
+    <br />
+    <table class="table">
+        <tr class="row">
+            <th class="col"></th>
+            <th class="col">
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th class="col">
+                @Html.DisplayNameFor(model => model.Product.ProductPrice)
+            </th>
+            <th class="col">
+                @Html.DisplayNameFor(model => model.Product.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th class="col"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.ProductID == 0)
+            {
+                continue;
+            }
+            sum += item.Product.ProductPrice * item.Amount;
+            <tr class="row">
+                <td class="col">
+                    <img alt="@item.Product.ProductName" src="@item.Product.ProductImagePath" width="50" />
+                </td>
+                <td class="col">
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td class="col">
+                    @Html.DisplayFor(modelItem => item.Product.ProductPrice)
+                </td>
+                <td class="col">
+                    @Html.DisplayFor(modelItem => item.Product.Gender)
+                </td>
+                <td class="col">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td class="col">
+                    <button onclick="window.location = '/Home/DeleteItemFromCart?productId=' + @item.ProductID">Delete Item </button>
+                </td>
+            </tr>
+        }
+
+        <tr class="row">
+            <td colspan="5" class="col">
+                <center>
+                    Cart Price @sum₪
+                </center>
+            </td>
+            <td class="col"><button onclick="window.location ='/Home/Order'"> Order Now </button></td>
+        </tr>
+
+    </table>
+    <br />
+    <hr />
+    <br />
+    &nbsp;
+</center>

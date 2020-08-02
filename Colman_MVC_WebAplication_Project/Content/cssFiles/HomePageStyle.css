@@ -1,0 +1,89 @@
+﻿
+#homepageHeader {
+    background-color: #FBFBFD;
+    padding: 0px 0px 0px 200px;
+    margin: 0;
+}
+
+#homepageHeaderSection {
+    background-color: #EEF2F5;
+    padding: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: left;
+    align-items: center;
+}
+
+.card {
+    background-color: #FFE5E5;
+    padding: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    width: 50px
+}
+
+.card:hover {
+    background-color: white;
+}
+
+.headLines {
+    background-color: white;
+    padding: 50px;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/*  Categories Cards  */
+.post-slider {
+    background-color: #FFECE5;
+}
+
+.post-slider > .post-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 350px;
+    padding: 0px 40px;
+    margin: 0px auto;
+}
+
+.post-slider > .post-wrapper > .post {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    margin: -70px 10px;
+    display: inline-block;
+}
+
+.post-slider > .post-wrapper > .post:hover {
+    margin: -60px 10px;
+}
+
+/* ---------------------------------------------- Products ----------------------------------------------------- */
+
+.products-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 500px;
+    padding: 0px 40px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.products-wrapper > .product {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px 10px;
+    display: inline-block;
+}

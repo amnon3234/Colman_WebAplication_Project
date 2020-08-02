@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Colman_MVC_WebAplication_Project.Models.Product>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<div>
+    <table>
+        <tr>
+            <td style="padding-right: 10px"><h2>Search Results</h2></td>
+        </tr>
+    </table>
+</div>
+
+<br />
+<br />
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductImagePath)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.ProductOrderCount)
+        </th>
+        <th class="col"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.ProductImagePath)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.ProductOrderCount)
+            </td>
+            <td class="col">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Colman_MVC_WebAplication_Project.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<div>
+    <table>
+        <tr>
+            <td style="padding-right: 10px"><h2>User Management</h2></td>
+            <td> <button onclick="onButtonClick('/Users/Create')"> Add User </button></td>
+        </tr>
+    </table>
+</div>
+<br />
+<br />
+<table>
+    <tr>
+        <td><input style="padding: 6px;" type="text" id="username" placeholder="UserName" /></td>
+        <td>
+            &nbsp; <button style="padding: 7px;" onclick="window.location = '/Users/Search?username='
+    + getElementById('username').value">
+                Search User
+            </button>
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.isEditor)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th class="col">
+            Cart
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.isEditor)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td class="col">
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td class="col">
+                <a href="/Carts/Index?userId=@item.UserID"> Watch Cart Items </a>
+            </td>
+            <td class="col">
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+            </td>
+        </tr>
+    }
+
+</table>

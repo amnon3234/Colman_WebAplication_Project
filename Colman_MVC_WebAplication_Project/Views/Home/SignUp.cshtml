@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="login-box">
+    <table>
+        <tr>
+            <td style="padding: 15px;">
+                <img src="~/Images/necklaces.jpg" width="300" alt="log-in" />
+            </td>
+            <td style="padding: 15px;">
+                <div style="text-align: center;">
+                    <h1> Sign-Up </h1>
+                    <br/>
+                    <form id="sign-form" class="login-form" method="post">
+                        @if (Model != null)
+                        {
+                            string message = Model[0];
+                            <label style="color: red;">@message</label>
+                            <br/><br/>
+                        }
+                        <input name="username" type="text" placeholder="Enter UserName"/>
+                        <br/>
+                        <input name="password" type="password" placeholder="Password"/>
+                        <br/>
+                        <input name="address" type="text" placeholder="Address"/>
+                        <br/>
+                        <input name="phoneNumber" type="tel" placeholder="PhoneNumber"/>
+                        <br/>
+                        <button onclick="document.getElementById('sign-form').submit();"> Sign-Up </button>
+                        <br/>
+                    </form>
+                    <button onclick="window.location = '/Home/Login'"> Already have an account? sign in </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="height: 600px;">
+</div>

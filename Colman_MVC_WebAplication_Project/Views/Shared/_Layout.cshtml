@@ -1,0 +1,131 @@
+﻿@using Colman_MVC_WebAplication_Project.Models
+@using System.Data.Entity
+@using Colman_MVC_WebAplication_Project.Data
+
+@{
+    StoreDataBase dataBase = new StoreDataBase();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/cssFiles/HomePageStyle.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/cssFiles/ProductPage.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/cssFiles/LayoutPageStyle.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+    <body>
+
+        <!-- Nav Bar -->
+        <header class="header-wrapper">
+            <a href="/Home/index"><img class="logo" src="~/Images/logo.jpg" alt="logo" /></a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/Home/CategoryPage?CategoryId=2"> P A S S P O R T </a></li>
+                    <li><a href="/Home/CategoryPage?CategoryId=3"> C H A R M S </a></li>
+                    <li><a href="/Home/CategoryPage?CategoryId=4"> E A R R I N G S </a></li>
+                    <li><a href="/Home/CategoryPage?CategoryId=1"> N E C K L A C E S </a></li>
+                    <li><a href="/Home/CategoryPage?CategoryId=5"> B R A C E L E T S </a></li>
+                    <li><a href="/Home/CategoryPage?CategoryId=6">R I N G S </a></li>
+                </ul>
+            </nav>
+            <button onclick="window.location='/home/Contact';">Contact</button>
+
+            <!--
+            User logged in ? present cart page access button and log-out option
+                           : present log-in option
+        -->
+            @if (Session["User"] != null)
+            {
+                /*
+                    Gather username from session variable , import the username cart details
+                    and present number of items in the cart
+                */
+                string username = (string)Session["User"];
+                User user = dataBase.Users.FirstOrDefault(u => u.UserName == username);
+                List<Cart> carts = dataBase.Carts.Include(c => c.Product)
+                    .Include(c => c.User).Where(c => c.UserID == user.UserID).ToList();
+                int cartCount = carts.Count;
+
+                <button onclick="window.location='/home/LogOut';"> Log out </button>
+                <a href="/Home/UserCart"> &nbsp; <img src="~/Images/cart_32.png" alt="cart" /></a>
+                <label style="margin-left: -10px; margin-top: 10px; color: #FFE5E5;">
+                    @cartCount
+                </label>
+            }
+            else
+            {
+                <button onclick="window.location='/home/login';"> Log In </button>
+            }
+
+        </header>
+
+        <!-- Page Body -->
+        <main id="page-wrapper">
+            @RenderBody()
+        </main>
+
+        <!-- Footer Bar -->
+        <footer>
+            <div class="footer">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <h1><span>SILVER</span> ACCESS</h1>
+                        <br />
+                        <p>Beautifully designed necklaces and pendants,</p>
+                        <p>bracelets, rings and more.</p>
+                        <br />
+                        <p>Email: test@test.com</p>
+                        <p>phone: 000-000-0000</p>
+                    </div>
+                    <div class="footer-section links">
+                        <h2> Quick Links</h2>
+                        <br />
+                        <ul>
+                            <a href="/home/index"><li>HomePage</li></a>
+                            @if (Session["User"] != null)
+                            {
+
+                                string username = (string)Session["User"];
+                                User user = dataBase.Users.FirstOrDefault(u => u.UserName == username);
+                                if (user.isEditor)
+                                {
+                                    <a><li onclick="window.location = '/Administrator/Index'">Manager Page</li></a>
+                                }
+                                <a href="/Home/UserCart"><li>Cart</li></a>
+                                <a href="/home/LogOut"><li>Log out</li></a>
+                            }
+                            else
+                            {
+                                <a href="~/Views/Home/Login.cshtml"><li> LogIn </li></a>
+                                <a href="~/Views/Home/SignUp.cshtml"><li> SignUp </li></a>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="footer-section contacts">
+                        <h2> Contact Us </h2>
+                        <br />
+                        <form action="mailto:test@test.com" method="post" enctype="text/plain">
+                            <input type="email" name="email" class="text-input" placeholder="Your email address" /><br />
+                            <textarea style="height: 50px;" name="message" class="text-input" placeholder=" Your message "></textarea><br />
+                            <button style="width: 200px;" type="submit"> Send </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    Web Application Project | Designed by Amnon Ashkenazy , Zhoar Azran & Nivo Choen
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="~/Content/JSFiles/LayoutPageFunctions.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

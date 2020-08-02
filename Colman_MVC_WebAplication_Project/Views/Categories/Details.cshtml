@@ -1,0 +1,40 @@
+﻿@model Colman_MVC_WebAplication_Project.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<h2>Category Details</h2>
+<hr/>
+<br/><br/>
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryImagePath)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+    </tr>
+    <tr class="row">
+        <td class="col">
+            @Html.DisplayFor(model => model.CategoryName)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.CategoryImagePath)
+        </td>
+        <td class="col">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </td>
+    </tr>
+</table>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

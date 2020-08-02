@@ -1,0 +1,26 @@
+﻿button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+    padding: 9px 25px;
+    background-color: #FFB4BE;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: #f3f5f9;
+}
+
+.table, .row, .col {
+    border: 1px solid #FFECE5;
+    border-collapse: collapse;
+}
+
+.col {
+    padding: 15px;
+}

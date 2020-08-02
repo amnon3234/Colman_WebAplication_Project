@@ -1,0 +1,36 @@
+﻿@model Colman_MVC_WebAplication_Project.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Adminstrator_Layout.cshtml";
+}
+
+<h2>User Details</h2>
+<hr />
+<br />
+<br />
+
+<table class="table">
+    <tr class="row">
+        <th class="col">
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th class="col">
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+    </tr>
+    <tr class="row">
+        <td class="col">
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+        <td class="col">
+            @Html.DisplayFor(model => model.Password)
+        </td>
+    </tr>
+</table>
+
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
