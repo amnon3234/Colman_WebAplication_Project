@@ -1,0 +1,94 @@
+## Categories
+
+SET IDENTITY_INSERT [dbo].[Categories] ON
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (1, N'N E C K L A C E S', N'~/images/necklaces.jpg', N'Explore classic and modern SilverAccess necklaces and pendants')
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (2, N'P A S S P O R T S', N'~/images/passport.jpg', N'Check out our passport holder selection for the very best in unique or custom, handmade pieces from our passport covers shops.')
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (3, N'C H A R M S', N'~/images/charms.jpg', N'Explore our wide selection of charms and accessories to adorn your Pandora charm bracelets.')
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (4, N'E A R R I N G S', N'~/images/earings.jpg', N'Explore classic and modern SilverAccessearrings for every occasion.')
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (5, N'B R A C E L E T S', N'~/images/bracelates.jpg', N'Check out our bracelets selection for the very best in unique or custom, handmade pieces from our shop.')
+INSERT INTO [dbo].[Categories] ([CategoryID], [CategoryName], [CategoryImagePath], [CategoryDescription]) VALUES (6, N'R I N G S', N'~/images/rings.jpg', N'Make a charismatic statement with our beauftiful rings – our large selection is waiting for you.')
+SET IDENTITY_INSERT [dbo].[Categories] OFF
+
+## Products
+
+SET IDENTITY_INSERT [dbo].[Products] ON
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (10, N'Mom Necklace', N'https://bit.ly/2UKGR8x', N'Description of the product', 159, 14, 1, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (11, N'Checkered Tie Necklace', N'https://bit.ly/2Y318rW', N'Description of the product', 139, 6, 1, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (12, N'Bear Stone Necklace', N'https://bit.ly/2MZ4RR1', N'Description of the product', 149, 7, 1, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (13, N'Syphilisity Chain', N'https://bit.ly/2Nc7QG1', N'Description of the product', 49, 8, 1, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (14, N'Small plaid eye necklace', N'https://bit.ly/2C6kP9H', N'Description of the product', 149, 4, 1, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (15, N'New York Heart Necklace', N'https://bit.ly/3hukC0s', N'Description of the product', 149.91, 3, 1, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (16, N'A blackened black squirrel necklace', N'https://bit.ly/3hypBgG', N'Description of the product', 159, 4, 1, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (17, N'Square Roman Necklace Set', N'https://bit.ly/2C9qH25', N'Description of the product', 139, 1, 1, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (18, N'Round stone necklace decorated with stones', N'https://bit.ly/37xWB44', N'Description of the product', 149, 3, 1, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (19, N'A drop chain falls off', N'https://bit.ly/3huDzjv', N'Description of the product', 159, 3, 1, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (20, N'Designed for a red passport', N'https://bit.ly/2ULpR1O', N'Description of the product', 119, 14, 2, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (21, N'Designed cover for pink passport', N'https://bit.ly/30FPZPz', N'Description of the product', 119, 5, 2, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (22, N'Designed cover for green passport', N'https://bit.ly/2Y0inKm', N'Description of the product', 119, 5, 2, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (23, N'Designed cover for black passport', N'https://bit.ly/2UHZzgP', N'Description of the product', 119, 8, 2, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (24, N'Hearts security chain', N'https://bit.ly/2N1pbB6', N'Description of the product', 99, 12, 3, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (25, N'Charm Carriage', N'https://bit.ly/30NbNJ1', N'Description of the product', 69, 8, 3, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (26, N'Tsarmas Pipin inlaid', N'https://bit.ly/2N1VPml', N'Description of the product', 79, 10, 3, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (27, N'Cams Mickey', N'https://bit.ly/3daDCOd', N'Description of the product', 79, 8, 3, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (28, N'Louis Hoop Earring', N'https://bit.ly/2N1pLPi', N'Description of the product', 149, 12, 4, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (29, N'Medium hoop earring', N'https://bit.ly/2Y0jHwO', N'Description of the product', 129, 7, 4, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (30, N'Big hoop earring', N'https://bit.ly/2B9BlVY', N'Description of the product', 119, 4, 4, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (31, N'Falling tennis earring', N'https://bit.ly/2Y0rACt', N'Description of the product', 119, 9, 4, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (32, N'tennis bracelet', N'https://bit.ly/2AC7e9O', N'Description of the product', 149, 14, 5, N'female')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (33, N'Teddy bear hoop bracelet', N'https://bit.ly/2UMR4RP', N'Description of the product', 149, 9, 5, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (34, N'Teddy bear chain bracelet', N'https://bit.ly/2UI2c2b', N'Description of the product', 149, 8, 5, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (35, N'Bullet bracelet Italy', N'https://bit.ly/30KQ3h8', N'Description of the product', 198, 13, 5, N'male')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (36, N'Hugging ring', N'https://bit.ly/2ArS2w1', N'Description of the product', 149, 15, 6, N'both')
+INSERT INTO [dbo].[Products] ([ProductID], [ProductName], [ProductImagePath], [ProductDescription], [ProductPrice], [ProductOrderCount], [CategoryID], [Gender]) VALUES (37, N'Seal teddy bear ring', N'https://bit.ly/2UKMmUu', N'Description of the product', 119, 8, 6, N'male')
+SET IDENTITY_INSERT [dbo].[Products] OFF
+
+## Users
+
+SET IDENTITY_INSERT [dbo].[Users] ON
+INSERT INTO [dbo].[Users] ([UserID], [UserName], [Password], [isEditor], [Address], [phoneNumber]) VALUES (1, N'Admin', N'admin1231', 1, N'ashdod kshatot', 547443646)
+INSERT INTO [dbo].[Users] ([UserID], [UserName], [Password], [isEditor], [Address], [phoneNumber]) VALUES (2, N'SimpleUser', N'simpleUser', 0, N'userStreet', 547443246)
+INSERT INTO [dbo].[Users] ([UserID], [UserName], [Password], [isEditor], [Address], [phoneNumber]) VALUES (4, N'user', N'user', 0, N'useraddress', 544448864)
+SET IDENTITY_INSERT [dbo].[Users] OFF
+
+## Order History
+
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 10, 9, 2)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 11, 1, 9)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 12, 2, 4)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 13, 1, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 16, 7, 11)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 21, 3, 8)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 22, 3, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 24, 5, 2)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (1, 25, 6, 12)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (2, 12, 2, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (2, 23, 9, 5)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (2, 24, 6, 6)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 10, 1, 1)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 11, 3, 2)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 13, 3, 6)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 15, 5, 5)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 16, 3, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 17, 8, 10)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 18, 9, 9)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 19, 6, 5)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 20, 6, 1)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 21, 2, 7)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 22, 2, 6)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (4, 26, 1, 12)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 10, 1, 12)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 16, 6, 4)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 17, 7, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 18, 4, 3)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 19, 6, 5)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 21, 5, 4)
+INSERT INTO [dbo].[OrderHistories] ([UserID], [ProductID], [Amount], [MonthNumber]) VALUES (7, 22, 8, 4)
+
+## Carts
+
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (1, 10, 4)
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (1, 12, 1)
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (1, 15, 1)
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (1, 35, 1)
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (2, 12, 2)
+INSERT INTO [dbo].[Carts] ([UserID], [ProductID], [Amount]) VALUES (2, 32, 1)
