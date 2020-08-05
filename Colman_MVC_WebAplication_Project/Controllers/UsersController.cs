@@ -15,15 +15,34 @@ namespace Colman_MVC_WebAplication_Project.Controllers
     {
         private StoreDataBase db = new StoreDataBase();
 
+        private bool checkIfAdmin()
+        {
+            if (Session["user"] != null)
+            {
+                string userName = Session["user"] as string;
+                User user = db.Users.FirstOrDefault(u => u.UserName == userName);
+                if (user.isEditor)
+                    return true;
+            }
+
+            return false;
+        }
+
         // GET: Users
         public ActionResult Index()
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +58,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             return View();
         }
 
@@ -62,6 +84,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -93,6 +118,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +146,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
 
         public ActionResult Search(string username)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             User currUser = db.Users.FirstOrDefault(user => user.UserName == username);
 
             return currUser == null ? RedirectToAction("Index") : RedirectToAction("Details", new { id = currUser.UserID });

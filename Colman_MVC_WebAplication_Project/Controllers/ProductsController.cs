@@ -14,9 +14,25 @@ namespace Colman_MVC_WebAplication_Project.Controllers
     {
         private StoreDataBase db = new StoreDataBase();
 
+        private bool checkIfAdmin()
+        {
+            if (Session["user"] != null)
+            {
+                string userName = Session["user"] as string;
+                User user = db.Users.FirstOrDefault(u => u.UserName == userName);
+                if (user.isEditor)
+                    return true;
+            }
+
+            return false;
+        }
+
         // GET: Products
         public ActionResult Index()
         {
+            if(!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             var products = db.Products.Include(p => p.Category);
             return View(products.ToList());
         }
@@ -24,6 +40,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +59,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             return View();
         }
@@ -65,6 +87,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -98,6 +123,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -123,12 +151,18 @@ namespace Colman_MVC_WebAplication_Project.Controllers
 
         public ActionResult SimpleSearch(string productName)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             Product curr = db.Products.FirstOrDefault(product => product.ProductName == productName);
             return curr == null ? RedirectToAction("Index") : RedirectToAction("Details", new { id = curr.ProductID });
         }
 
         public ActionResult Search(int categoryid = 0, double price = double.MaxValue, string gender = "none")
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             var products = db.Products.Include(p => p.Category);
 
             List<Product> searchValues = new List<Product>();

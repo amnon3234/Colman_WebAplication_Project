@@ -7,13 +7,13 @@ namespace Colman_MVC_WebAplication_Project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class First : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(First));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202007311945303_First"; }
+            get { return "202008051154505_init"; }
         }
         
         string IMigrationMetadata.Source

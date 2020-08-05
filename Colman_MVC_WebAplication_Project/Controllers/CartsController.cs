@@ -15,8 +15,24 @@ namespace Colman_MVC_WebAplication_Project.Controllers
     {
         private StoreDataBase db = new StoreDataBase();
 
+        private bool checkIfAdmin()
+        {
+            if (Session["user"] != null)
+            {
+                string userName = Session["user"] as string;
+                User user = db.Users.FirstOrDefault(u => u.UserName == userName);
+                if (user.isEditor)
+                    return true;
+            }
+
+            return false;
+        }
+
         public ActionResult Index(int userId = 1)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             var carts = db.Carts.Include(c => c.Product).Include(c => c.User).Where(c => c.UserID == userId).ToList();
             return View(carts.Count > 0
                 ? carts
@@ -32,6 +48,8 @@ namespace Colman_MVC_WebAplication_Project.Controllers
 
         public ActionResult AddItem(int userId, int productId)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
 
             Cart cartItem = db.Carts.SingleOrDefault(c => c.UserID == userId && c.ProductID == productId);
 
@@ -57,6 +75,9 @@ namespace Colman_MVC_WebAplication_Project.Controllers
 
         public ActionResult DeleteItem(int userId, int productId)
         {
+            if (!this.checkIfAdmin())
+                return RedirectToAction("index", "Home");
+
             var cart = db.Carts.Include(c => c.Product).Include(c => c.User)
                 .Where(c => c.UserID == userId && c.ProductID == productId);
 

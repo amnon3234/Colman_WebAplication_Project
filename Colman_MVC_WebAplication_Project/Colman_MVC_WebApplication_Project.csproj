@@ -137,13 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007311945303_First.cs" />
-    <Compile Include="Migrations\202007311945303_First.designer.cs">
-      <DependentUpon>202007311945303_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007312156583_secound.cs" />
-    <Compile Include="Migrations\202007312156583_secound.designer.cs">
-      <DependentUpon>202007312156583_secound.cs</DependentUpon>
+    <Compile Include="Migrations\202008051154505_init.cs" />
+    <Compile Include="Migrations\202008051154505_init.designer.cs">
+      <DependentUpon>202008051154505_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -240,15 +236,12 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007311945303_First.resx">
-      <DependentUpon>202007311945303_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007312156583_secound.resx">
-      <DependentUpon>202007312156583_secound.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\202008051154505_init.resx">
+      <DependentUpon>202008051154505_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
