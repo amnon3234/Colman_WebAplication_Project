@@ -77,12 +77,21 @@ namespace Colman_MVC_WebAplication_Project.Controllers
                     .OrderByDescending(o => o.Product.ProductOrderCount).ToList();
 
                 foreach (OrderHistory order in userOrderHistory)
-                    if (order.ProductID != currProduct.ProductID)
-                    {
-                        Product similarProduct = db.Products.FirstOrDefault(p => p.CategoryID == order.Product.CategoryID 
-                                                   && p.ProductID != order.ProductID);
+                {
+                    if (order.ProductID == currProduct.ProductID) continue;
+
+                    Product product = db.Products.Find(order.ProductID);
+                    int currCategoryId = product.CategoryID;
+
+                    Product similarProduct = db.Products.FirstOrDefault(p => p.CategoryID == currCategoryId
+                        && p.ProductID != product.ProductID && p.ProductID != currProduct.ProductID);
+
+                    if (similarProduct == null) continue;
+
+                    if(!productsList.Contains(similarProduct))
                         productsList.Add(similarProduct);
-                    }
+                }
+                    
             }
             else
                 productsList.AddRange(products.ToList().Where(product => product.CategoryID == currProduct.CategoryID && product.ProductID != currProduct.ProductID));
@@ -268,13 +277,18 @@ namespace Colman_MVC_WebAplication_Project.Controllers
 
                 db.Products.Find(item.ProductID).ProductOrderCount += 1;
 
-                db.OrderHistory.Add(new OrderHistory
-                {
-                    Product = item.Product,
-                    User = item.User,
-                    Amount = item.Amount,
-                    MonthNumber = DateTime.Now.Month
-                });
+                OrderHistory order = db.OrderHistory.FirstOrDefault(o => item.ProductID == o.ProductID);
+
+                if (order == null)
+                    db.OrderHistory.Add(new OrderHistory
+                    {
+                        Product = item.Product,
+                        User = item.User,
+                        Amount = item.Amount,
+                        MonthNumber = DateTime.Now.Month
+                    });
+                else
+                    order.Amount += item.Amount;
 
                 db.Carts.Remove(item);
                 db.SaveChanges();
