@@ -6,6 +6,9 @@
     ViewBag.Title = "Contact";
     StoreDataBase dataBase = new StoreDataBase();
     User user = dataBase.Users.FirstOrDefault(u => u.UserName == "Admin");
+    int regularUsers = dataBase.Users.Where(u => !u.isEditor).ToList().Count;
+    int AdminUsers = dataBase.Users.Where(u => u.isEditor).ToList().Count;
+
 }
 
 
@@ -51,15 +54,14 @@
         width: 600px;
     }
 
-    .joinTable , td , tr , th{
+    .joinTable, td, tr, th {
         border: 1px solid black;
         border-collapse: collapse;
     }
-    
-    .joinTable  td {
-        padding: 20px;
-    }
 
+        .joinTable td {
+            padding: 20px;
+        }
 </style>
 
 
@@ -220,7 +222,7 @@
         }
     </table>
     <br />
-    <br/>
+    <br />
 
     <h3> Join example 2 between Users and Carts </h3>
     <br />
@@ -251,13 +253,13 @@
         }
     </table>
 </center>
-<br/>
-<br/>
+<br />
+<br />
 
 <!-- Group by example -->
 <center>
     <h3> Group-by example grouping order History data by the ordering month </h3>
-    <br/>
+    <br />
     <table class="joinTable">
         <tr>
             <th> Month ordered</th>
@@ -270,31 +272,31 @@
 
             foreach (var list in groupbyList)
             {
-                var group =  list.GetEnumerator();
+                var group = list.GetEnumerator();
                 do
                 {
                     OrderHistory current = group.Current;
-                    if(current == null) {continue;}
-                <tr>
-                    <td>@current.MonthNumber</td>
-                    <td>@dataBase.Users.Find(current.UserID).UserName</td>
-                    <td>@dataBase.Products.Find(current.ProductID).ProductName</td>
-                    <td>@current.Amount</td>
-                </tr>
+                    if (current == null) { continue; }
+                    <tr>
+                        <td>@current.MonthNumber</td>
+                        <td>@dataBase.Users.Find(current.UserID).UserName</td>
+                        <td>@dataBase.Products.Find(current.ProductID).ProductName</td>
+                        <td>@current.Amount</td>
+                    </tr>
                 } while (group.MoveNext());
 
-    <tr>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
+                <tr>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                </tr>
             }
         }
     </table>
 </center>
-<br/>
-<br/>
+<br />
+<br />
 
 <!-- web service example -->
 
@@ -310,6 +312,7 @@
 <br />
 
 <!-- Contact page script -->
+
 <script type="text/javascript">
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -318,8 +321,8 @@
 </script>
 
 <script type="text/javascript">
-    if(typeof jQuery!=='undefined'){
-        $(document).ready(function() {
+    if (typeof jQuery !== 'undefined') {
+        $(document).ready(function () {
             $('#getWeather').click(function () {
                 var requestData = $('#city').val();
                 var result = $('#result-div');
@@ -335,7 +338,7 @@
             });
         });
     }
-    else{
+    else {
         console.log('problem with loading jquery');
     }
 </script>

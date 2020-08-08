@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\cssFiles\AdminstratorLayoutStyle.css" />
+    <Content Include="Content\cssFiles\chartsStyle.css" />
     <Content Include="Content\cssFiles\HomePageStyle.css" />
     <Content Include="Content\cssFiles\LayoutPageStyle.css" />
     <Content Include="Content\cssFiles\MangmentPage.css" />
