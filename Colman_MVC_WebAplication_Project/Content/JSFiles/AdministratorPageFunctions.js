@@ -26,14 +26,14 @@ function onButtonClick(path) {
     window.location = path;
 }
 
-const token = "EAAEjhsvZA7OsBAFKpGkg3n906CDqfxeY1680uJUDizJSC6XcjxGkCYKJjX0ezDtbTCIrHN298NF9UPy4nWxZCwvANOhpo2VGXTbS1eKZA0rlpqKJoCNgDZAtmTzCwJoj0ZCqN0ACHpuUqftrzNpZAbkeZAPpmXo4ybKcHa9ljOh3PvlMO41wzw7E75hNE9hVm7hFH3uY3XtJAZDZD";
+const token = "NO";
 
 // Post using facebook api
 function postAStatus() {
     var status = document.getElementById('postTxt').value;
 
     FB.api(
-        '/580344802644691/feed',
+        '/NO/feed',
         'POST',
         {
             "message": status,
@@ -47,7 +47,7 @@ function postAStatus() {
 
 function boostAProduct(status , photoURL) {
     FB.api(
-        '/580344802644691/photos',
+        '/NO/photos',
         'POST',
         {
             "message": status,
