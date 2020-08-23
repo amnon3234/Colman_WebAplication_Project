@@ -329,7 +329,7 @@
                 $.ajax({
                     url: 'https://api.openweathermap.org/data/2.5/weather',
                     method: 'get',
-                    data: { q: requestData, appid: '7a5b844e71553f776fd37bc08f7912f3' },
+                    data: { q: requestData, appid: 'NO' },
                     dataType: 'json',
                     success: function (data) {
                         result.html('The weather is ' + data.weather[0].main + '<br/>' + 'Description: ' + data.weather[0].description);
